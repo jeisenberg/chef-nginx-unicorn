@@ -1,46 +1,49 @@
 nginx_unicorn Cookbook
 ======================
-TODO: Enter the cookbook description here.
+This is a quick and dirty cookbook for configuring nginx to serve as a reverse proxy for a unicorn back end. 
 
 e.g.
 This cookbook makes your favorite breakfast sandwich.
 
 Requirements
 ------------
-TODO: List your cookbook requirements. Be sure to include any requirements this cookbook has on platforms, libraries, other cookbooks, packages, operating systems, etc.
+Requires nginx::source
+
+Tested on Ubuntu 10.04
 
 e.g.
 #### packages
-- `toaster` - nginx_unicorn needs toaster to brown your bagel.
+- `nginx::source` - this cookbook requires nginx::source installed on the node. Place 'nginx'in the recipe run list ahead of nginx_unicorn
 
 Attributes
 ----------
-TODO: List you cookbook attributes here.
 
-e.g.
-#### nginx_unicorn::default
 <table>
   <tr>
-    <th>Key</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Default</th>
+    <th>['nginx_unicorn]['proxy_server_name']</th>
+    <th>String</th>
+    <th>Upstram server name</th>
+    <th>e.g. 'app_upstream'</th>
   </tr>
   <tr>
-    <td><tt>['nginx_unicorn']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
+    <td><tt>['nginx_unicorn']['proxy_server_path']</tt></td>
+    <td>String</td>
+    <td>the location of the unicorn socket</td>
+    <td>e.g. 'unix:/sockets/unicorn.sock'</td>
+  </tr>
+  <tr>
+    <td><tt>['nginx_unicorn']['server_name']</tt></td>
+    <td>String</td>
+    <td>server name for nginx</td>
+    <td>e.g. 'domain.com'</td>
   </tr>
 </table>
 
 Usage
 -----
 #### nginx_unicorn::default
-TODO: Write usage instructions for each cookbook.
 
-e.g.
-Just include `nginx_unicorn` in your node's `run_list`:
+Just include `nginx_unicorn` in your node's `run_list` after nginx:
 
 ```json
 {
@@ -53,7 +56,6 @@ Just include `nginx_unicorn` in your node's `run_list`:
 
 Contributing
 ------------
-TODO: (optional) If this is a public cookbook, detail the process for contributing. If this is a private cookbook, remove this section.
 
 e.g.
 1. Fork the repository on Github
@@ -65,4 +67,4 @@ e.g.
 
 License and Authors
 -------------------
-Authors: TODO: List authors
+Authors: Jack Eisenberg
