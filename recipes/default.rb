@@ -7,7 +7,7 @@
 # All rights reserved - Do Not Redistribute
 #
 
-include_recipe "nginx"
+include_recipe "nginx::source"
 
 # delete nginx conf file
 file "/etc/nginx/nginx.conf" do
